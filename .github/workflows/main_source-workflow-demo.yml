@@ -11,7 +11,7 @@ on:
 
 env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.' # set this to the path to your web app project, defaults to the repository root
-  DOTNET_VERSION: '6.0.x' # set this to the dotnet version to use
+  DOTNET_VERSION: '8.0.x' # set this to the dotnet version to use
 
 jobs:
   build-and-deploy:
@@ -40,4 +40,4 @@ jobs:
           app-name: 'Source-Workflow-demo'
           slot-name: 'Production'
           package: '${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}/output'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B90F92C8FCE643BB83898E61E5C5F3E9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_999939A5135C453EA58716F5CA1984C0 }}
