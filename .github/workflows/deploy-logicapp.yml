@@ -1,1 +1,35 @@
+name: Deploy Logic App to Azure
+
+# Trigger this workflow on pushes to the main branch
+on:
+  push:
+    branches:
+      - main  # Change to your desired branch if necessary
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the code
+      uses: actions/checkout@v2
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy Logic App to Azure
+      run: |
+        echo "Deploying Logic App"
+        
+        # Deploy the Logic App using Azure CLI
+        az logicapp workflow update \
+          --resource-group <YourResourceGroupName> \
+          --name <YourLogicAppName> \
+          --definition @<path-to-your-json-definition-file>
+      env:
+        AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        RESOURCE_GROUP_NAME: <Tejas-POC-RG>
+        LOGIC_APP_NAME: <Source-Workflow-demo>
 
